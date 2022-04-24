@@ -10,8 +10,9 @@ const listaEventos = async () => {
 
   //não mostrar eventos que já passaram
   const eventosFuturos = respostaJSON.filter((evento) => 
-    evento.scheduled >= new Date().toISOString())
+    evento.scheduled >= new Date().getTime().toISOString())
 
+  console.log(new Date().getTime().toISOString())
   console.log(eventosFuturos)
   const eventosPorData = eventosFuturos.sort((a,b) => {
     if(a.scheduled > b.scheduled){
