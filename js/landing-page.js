@@ -22,7 +22,7 @@ const listaEventos = async () => {
     }
     return 0
   })
-
+  console.log(eventosPorData)
   const data1Raw = new Date(eventosPorData[0].scheduled)
   const data1 = `${data1Raw.getDate()}/${data1Raw.getMonth()+1}/${data1Raw.getFullYear()}`
   const data2Raw = new Date(eventosPorData[1].scheduled)
