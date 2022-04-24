@@ -1,7 +1,6 @@
 const card1 = document.querySelector("article:nth-child(1)")
 const card2 = document.querySelector("article:nth-child(2)")
 const card3 = document.querySelector("article:nth-child(3)")
-const dataAtual = new Date().getTime()
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 
 //! muito parecido com demais listas de eventos. refatorar
@@ -14,7 +13,6 @@ const listaEventos = async () => {
     evento.scheduled >= new Date().toISOString())
 
   console.log(new Date())
-  console.log(dataAtual)
   console.log(eventosFuturos)
   const eventosPorData = eventosFuturos.sort((a,b) => {
     if(a.scheduled > b.scheduled){
