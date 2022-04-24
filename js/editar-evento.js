@@ -28,7 +28,7 @@ window.addEventListener('load', async () => {
       inputAtracoes.value = evento.attractions;
       inputDescricao.value = evento.description;
       const dataHora = evento.scheduled;
-      inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(0,4)} ${dataHora.slice(11,16)}`
+      inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(2,4)} ${dataHora.slice(11,16)}`
       inputLotacao.value = evento.number_tickets;
 
     } catch(error){
@@ -50,7 +50,8 @@ form.onsubmit = async (e) => {
   const splitDateTime = rawDate.split(" ");
   const splitDate = splitDateTime[0].split("/");
   const splitTime = splitDateTime[1].split(":");
-  const date = new Date("20" + splitDate[2], splitDate[1] - 1, splitDate[0] - 1, splitTime[0], splitTime[1])
+  const date = new Date(20 + splitDate[2], splitDate[1] - 1, splitDate[0] - 1, splitTime[0], splitTime[1])
+  console.log(date)
   const formattedDate = date.toISOString()
   
   try {

@@ -27,7 +27,7 @@ window.addEventListener('load', async () => {
       inputAtracoes.value = evento.attractions;
       inputDescricao.value = evento.description;
       const dataHora = evento.scheduled;
-      inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(0,4)} ${dataHora.slice(11,16)}`
+      inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(2,4)} ${dataHora.slice(11,16)}`
       inputLotacao.value = evento.number_tickets;
 
     } catch(error){
