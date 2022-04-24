@@ -31,8 +31,8 @@ const listaEventos = async () => {
   const data3 = `${data1Raw.getDate()}/${data1Raw.getMonth()+1}/${data1Raw.getFullYear()}`
 
   card1.querySelector("h2").innerHTML = `${eventosPorData[0].name} - ${data1}`
-  card2.querySelector("h2").innerHTML = `${eventosPorData[1].name} - ${data1}`
-  card3.querySelector("h2").innerHTML = `${eventosPorData[2].name} - ${data1}`
+  card2.querySelector("h2").innerHTML = `${eventosPorData[1].name} - ${data2}`
+  card3.querySelector("h2").innerHTML = `${eventosPorData[2].name} - ${data3}`
 
   card1.querySelector("h4").innerHTML = eventosPorData[0].attractions
   card2.querySelector("h4").innerHTML = eventosPorData[1].attractions
