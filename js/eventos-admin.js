@@ -57,6 +57,7 @@ const listaEventos = async () => {
     btnExcluir.setAttribute("class", "btn btn-danger");
     btnExcluir.setAttribute("href", "excluir-evento.html?id="+evento._id);
     btnExcluir.innerHTML = "excluir";
+    btnExcluir.style.marginLeft = "3px";
     tdBotoes.appendChild(btnExcluir);
   }
 }
