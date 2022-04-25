@@ -1,6 +1,6 @@
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const tBody = document.querySelector("tbody");
-const reserveTicketButton = document.querySelectorAll(".btn");
+const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
 // const ticketModal = document.querySelector(".reserve-ticket-modal");
