@@ -1,197 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
-body{
-    font-family: 'Questrial', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+body {
+  font-family: "Questrial", sans-serif;
 }
 
 .img-responsive {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 header {
-    position: relative;
-    box-shadow: 0px 5px 4px 0px rgb(63 63 63 / 27%);
-    width: 100%;
-    background-color: #fff;
+  position: relative;
+  box-shadow: 0px 5px 4px 0px rgb(63 63 63 / 27%);
+  width: 100%;
+  background-color: #fff;
 }
 aside {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: #C2185B;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #c2185b;
 }
 
-.btn-primary{
-    background-color: #C2185B;
-    border-color: #C2185B;
+.btn-primary {
+  background-color: #c2185b;
+  border-color: #c2185b;
 }
 
 main.login {
-    width: 400px;
+  width: 400px;
 }
 
-section.full{
-    width: 100%;
-    min-height: 80vh;
-    padding: 50px 0;
+section.full {
+  width: 100%;
+  min-height: 80vh;
+  padding: 50px 0;
 }
 
 article.evento {
-    width: 350px;
+  width: 350px;
 }
 
-footer nav ul{
-    list-style: none;
-    display: flex;
+footer nav ul {
+  list-style: none;
+  display: flex;
 }
 
-footer nav ul li  {
-    padding: 10px;
+footer nav ul li {
+  padding: 10px;
 }
 
-.col{
-    display: block;
+/* Modal de reserva de ingresso */
+
+.backdrop-reserve-ticket-modal {
+  position: absolute;
+
+  z-index: 1;
+
+  min-width: 100vw;
+  min-height: 350vh;
+
+  background-color: rgba(0, 0, 0, 0.251);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#col-img{
-    display: block;
+.reserve-ticket-modal {
+  padding: 2rem;
+
+  height: 30rem;
+  width: 30rem;
+
+  background-color: white;
+  box-shadow: 0.1rem 0.2rem 2rem 0.4rem black;
+  border-radius: 3rem;
 }
 
-#container-eventor {
-    display: flex;
-    flex-wrap: wrap;
-}
-#img-footer {
-    display: flex;
+.reserve-ticket-modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#footer {
-    display: flex;
+.upper-ticket-modal {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 3rem;
 }
 
-.container {        
+.ticket-modal-close-icon {
+  cursor: pointer;
 }
 
-#col-left {
-   width: ;
+.upper-ticket-modal b {
+  font-size: 1.7rem;
 }
 
-#logo {
-    display: flex;
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin-bottom: 2rem;
+  margin-left: 3rem;
 }
 
-.col-6{
-    width:;
-}
-#lista {
-    display: ;
+.reserve-ticket-modal label {
+  font-size: 1.3rem;
 }
 
-.btn {
-    line-height:;
+.reserve-ticket-modal input {
+  width: 20rem;
+  height: 2.5rem;
+
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+
+  border-radius: 2rem;
+  border: 1px solid black;
 }
 
-.bd-example {}
+.reserve-ticket-modal button {
+  border: none;
 
-.row {}
+  width: 13rem;
+  height: 2.1rem;
+  margin-left: 6rem;
 
-.btn-index {}
+  background-color: #c2185b;
+  color: white;
+  border-radius: 2rem;
+}
 
-#btn-excluir {}
-
-.btn-reservar{}
-
-@media only screen and (max-width: 481px) {
-    #col-img {
-        display:none;
-    }
-    #footer {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .container {
-        padding: 0 30px;
-    }
-    #col-left {
-        width: 480px;
-    }
-    .img-responsive {
-        display: flex;
-        max-width: 20%;
-    }
-    #logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .col-6{
-        width:150%;
-    }
-
-    .btn {
-        line-height: 0.0;
-        width: 90px;
-        font-size: 10px;
-    }
-
-    .bd-example {
-        width: 120%;
-        display: flex;
-        justify-content: center;
-        font-size: 11px;
-        margin-left: 40px;
-    }
-    .row {
-        font-size: 13px;
-    }
-    .btn-index {
-        line-height: 0.9;
-        font-size: 12px;
-    }
-    #btn-excluir {
-        line-height: 0.9;
-        font-size: 12px;
-    }
-
-    .btn-reservar {
-        line-height: 0.9;
-        font-size: 12px;
-    }
-
-} 
-
-@media (max-width: 769px) and (min-width: 481px){
-    .col{
-        display: flex;
-        flex-direction: column;
-    }  
-    #col-img {
-        display:none;
-    }
-    #col-left {
-        width: 160px;
-    }
-    .col-6{
-        width:100%;
-    }   
-    .btn {
-        line-height: 0.5;
-        font-size: 14px;
-        width: 110px;
-    }
-    .btn-index {
-        line-height: 0.8;
-    }
-
-    #btn-excluir {
-        line-height: 0.8;
-    }
-    .btn-reservar{
-        line-height: 0.8;
-    }
-
-
+.hidden {
+  display: none;
 }
