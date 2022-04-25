@@ -14,8 +14,8 @@ form.onsubmit = async (e) => {
   const splitDateTime = rawDate.split(" ");
   const splitDate = splitDateTime[0].split("/");
   const splitTime = splitDateTime[1].split(":");
-  const date = new Date("20" + splitDate[2], splitDate[1] - 1, splitDate[0] - 1, splitTime[0], splitTime[1])
-  const formattedDate = date.toISOString()
+  const date = new Date(20 + splitDate[2], splitDate[1] - 1, splitDate[0] - 1, splitTime[0], splitTime[1]+1260)
+  const formattedDate = date.toISOString() 
   
   try {
   const novoEvento = {
