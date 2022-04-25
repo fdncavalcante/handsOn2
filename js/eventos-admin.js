@@ -7,15 +7,6 @@ const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
 
 //const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 
-for (let btn of reserveTicketButton) {
-  btn.addEventListener("click", function () {
-    modalBackdrop.classList.remove("hidden");
-  });
-}
-
-closeTicketModal.addEventListener("click", function () {
-  modalBackdrop.classList.add("hidden");
-});
 
 const listaEventos = async () => {
   const resposta = await fetch(`${BASE_URL}/events`);
