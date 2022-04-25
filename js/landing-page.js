@@ -5,7 +5,6 @@ const cards = [card1, card2, card3];
 const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 
 //MODAL
 const inputNome = document.querySelector("#name-input");
@@ -31,15 +30,15 @@ closeTicketModal.addEventListener("click", function () {
 });
 
 //! muito parecido com demais listas de eventos. refatorar
-const listaEventos = async () => {
-  const resposta = await fetch(`${BASE_URL}/events`);
-  const respostaJSON = await resposta.json();
+const proximosEventos = async () => {
+  await listarEventos();
 
   //não mostrar eventos que já passaram
-  const eventosFuturos = respostaJSON.filter(
+  const eventosFuturos = listaDeEventos.filter(
     (evento) => evento.scheduled >= new Date().toISOString()
   );
 
+  //organizar eventos por data
   const eventosPorData = eventosFuturos.sort((a, b) => {
     if (a.scheduled > b.scheduled) {
       return 1;
@@ -70,38 +69,24 @@ const listaEventos = async () => {
   }
 };
 
-listaEventos();
-
 
 //Reservar Ingressos
 formModal.onsubmit = async (e) => {
   e.preventDefault();
   
   try {
-  const novaReserva = {
+    const novaReserva = {
     "owner_name": inputNome.value,
     "owner_email": inputEmail.value,
     "number_tickets": inputIngressos.value,
     "event_id": formModal.id,
-  };
+    };
+    const resposta = await reservarIngressos(novaReserva);
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(novaReserva),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  console.log(options.body)
-    const resposta = await fetch(`${BASE_URL}/bookings`, options);
-    const conteudoResposta = await resposta.json();
-    console.log("🚀 / file: cadastro-evento.js / line 37 / form.onsubmit= / conteudoResposta", conteudoResposta);
-
-    document.querySelector("div.upper-ticket-modal > b").innerHTML = "seus ingressos foram reservados com sucesso!"
+    document.querySelector("div.upper-ticket-modal > b").innerHTML = resposta
   } catch (error) {
     console.log(error);
-    document.querySelector("div.upper-ticket-modal > b").innerHTML = "Ops! Algo deu errado na reserva do(s) seu(s) ingresso(s)..."
+    document.querySelector("div.upper-ticket-modal > b").innerHTML = resposta
   } finally {
     console.log("FINALLY")
     inputNome.disabled = true;

@@ -3,7 +3,6 @@ const inputAtracoes = document.querySelector("#atracoes");
 const inputDescricao = document.querySelector("#descricao");
 const inputData = document.querySelector("#data");
 const inputLotacao = document.querySelector("#lotacao");
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const form = document.querySelector("main > div:nth-child(2) > form");
 
 form.onsubmit = async (e) => {
@@ -27,23 +26,9 @@ form.onsubmit = async (e) => {
     "number_tickets": inputLotacao.value,
   };
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(novoEvento),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  
-    const resposta = await fetch(`${BASE_URL}/events`, options);
-    const conteudoResposta = await resposta.json();
-    console.log("🚀 / file: cadastro-evento.js / line 37 / form.onsubmit= / conteudoResposta", conteudoResposta);
-
-    alert("seu evento foi adicionado com sucesso!")
+    await criarEvento(novoEvento);
     window.location.replace("admin.html")
   } catch (error) {
     console.log(error);
-    alert("Ops! Algo deu errado no cadastro deste evento...");
   }
 };
