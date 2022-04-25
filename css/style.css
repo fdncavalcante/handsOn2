@@ -91,13 +91,16 @@ footer nav ul li  {
     line-height:;
 }
 
-.bd-example {
-    
-}
+.bd-example {}
 
-.row {
+.row {}
 
-}
+.btn-index {}
+
+#btn-excluir {}
+
+.btn-reservar{}
+
 @media only screen and (max-width: 481px) {
     #col-img {
         display:none;
@@ -144,6 +147,19 @@ footer nav ul li  {
     .row {
         font-size: 13px;
     }
+    .btn-index {
+        line-height: 0.9;
+        font-size: 12px;
+    }
+    #btn-excluir {
+        line-height: 0.9;
+        font-size: 12px;
+    }
+
+    .btn-reservar {
+        line-height: 0.9;
+        font-size: 12px;
+    }
 
 } 
 
@@ -165,7 +181,17 @@ footer nav ul li  {
         line-height: 0.5;
         font-size: 14px;
         width: 110px;
-
     }
+    .btn-index {
+        line-height: 0.8;
+    }
+
+    #btn-excluir {
+        line-height: 0.8;
+    }
+    .btn-reservar{
+        line-height: 0.8;
+    }
+
 
 }
