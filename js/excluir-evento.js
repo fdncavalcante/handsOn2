@@ -19,8 +19,7 @@ window.addEventListener('load', async () => {
       inputBanner.value = evento.poster;
       inputAtracoes.value = evento.attractions;
       inputDescricao.value = evento.description;
-      const dataHora = evento.scheduled;
-      inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(2,4)} ${dataHora.slice(11,16)}`
+      inputData.value = evento.scheduled.slice(0,-1);
       inputLotacao.value = evento.number_tickets;
 
     } catch(error){

@@ -59,8 +59,9 @@ const editarEvento = async (id, eventoEditado = {}) => {
         "Content-Type": "application/json",
       },
     };
+  
 
-
+    console.log(eventoEditado)
     const resposta = await fetch(`${BASE_URL}/events/` + id, options);
     const conteudoResposta = await resposta.json();
     console.log("🚀 / file: cadastro-evento.js / line 37 / form.onsubmit= / conteudoResposta", conteudoResposta);

@@ -19,8 +19,7 @@ window.addEventListener('load', async () => {
     inputBanner.value = evento.poster;
     inputAtracoes.value = evento.attractions;
     inputDescricao.value = evento.description;
-    const dataHora = evento.scheduled;
-    inputData.value = `${dataHora.slice(8,10)}/${dataHora.slice(5,7)}/${dataHora.slice(2,4)} ${dataHora.slice(11,16)}`
+    inputData.value = evento.scheduled.slice(0,-1)
     inputLotacao.value = evento.number_tickets;
 
   } catch (error) {
@@ -34,13 +33,11 @@ window.addEventListener('load', async () => {
 form.onsubmit = async (e) => {
   e.preventDefault();
 
-  const rawDate = inputData.value
-  const splitDateTime = rawDate.split(" ");
-  const splitDate = splitDateTime[0].split("/");
-  const splitTime = splitDateTime[1].split(":");
-  const date = new Date(20 + splitDate[2], splitDate[1] - 1, splitDate[0] - 1, splitTime[0], splitTime[1] + 1260)
+  console.log(id)
+  const date = inputData.value
   console.log(date)
-  const formattedDate = date.toISOString()
+  //const formattedDate = date.toISOString()
+  //console.log(formattedDate)
 
   try {
     const novoEvento = {
@@ -48,12 +45,13 @@ form.onsubmit = async (e) => {
       "poster": inputBanner.value,
       "attractions": inputAtracoes.value.split(", "),
       "description": inputDescricao.value,
-      "scheduled": formattedDate,
+      "scheduled": date,
       "number_tickets": inputLotacao.value,
     };
 
     editarEvento(id, novoEvento)
-    window.location.replace("admin.html")
+   
+    //window.location.replace("admin.html")
   } catch (error) {
     console.log(error);
   }
