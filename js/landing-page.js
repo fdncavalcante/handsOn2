@@ -19,7 +19,7 @@ for (let btn of reserveTicketButton) {
 }
 
 closeTicketModal.addEventListener("click", function () {
-  
+
   inputNome.disabled = false;
   inputEmail.disabled = false;
   inputIngressos.disabled = false;
@@ -29,25 +29,10 @@ closeTicketModal.addEventListener("click", function () {
   modalBackdrop.classList.add("hidden");
 });
 
-//! muito parecido com demais listas de eventos. refatorar
 const proximosEventos = async () => {
-  await listarEventos();
+  
+  eventosPorData = await listarEventos(true);
 
-  //não mostrar eventos que já passaram
-  const eventosFuturos = listaDeEventos.filter(
-    (evento) => evento.scheduled >= new Date().toISOString()
-  );
-
-  //organizar eventos por data
-  const eventosPorData = eventosFuturos.sort((a, b) => {
-    if (a.scheduled > b.scheduled) {
-      return 1;
-    }
-    if (a.scheduled < b.scheduled) {
-      return -1;
-    }
-    return 0;
-  });
   console.log(eventosPorData);
 
   for (let i = 0; i < 3; i++) {
@@ -62,8 +47,8 @@ const proximosEventos = async () => {
     card.querySelector("p").innerHTML = evento.description;
 
 
-    card.querySelector("a").addEventListener('click', () =>{
-      formModal.setAttribute("id",`${evento._id}`)
+    card.querySelector("a").addEventListener('click', () => {
+      formModal.setAttribute("id", `${evento._id}`)
       console.log(formModal.id)
     })
   }
@@ -73,14 +58,14 @@ const proximosEventos = async () => {
 //Reservar Ingressos
 formModal.onsubmit = async (e) => {
   e.preventDefault();
-  
+
   try {
     const novaReserva = {
-    "owner_name": inputNome.value,
-    "owner_email": inputEmail.value,
-    "number_tickets": inputIngressos.value,
-    "event_id": formModal.id,
+      "event_id": formModal.id,
     };
+
+    formParaObj(formModal,novaReserva);
+
     const resposta = await reservarIngressos(novaReserva);
 
     document.querySelector("div.upper-ticket-modal > b").innerHTML = resposta

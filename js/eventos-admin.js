@@ -1,16 +1,15 @@
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const tBody = document.querySelector("tbody");
 const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
 // const ticketModal = document.querySelector(".reserve-ticket-modal");
 
-//const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 
 
 const listaEventos = async () => {
-  const resposta = await fetch(`${BASE_URL}/events`);
-  const respostaJSON = await resposta.json();
+  const respostaJSON = await listarEventos();
+
+  console.log(respostaJSON);
   for (let i = 0; i < respostaJSON.length; i++) {
     const evento = respostaJSON[i];
 

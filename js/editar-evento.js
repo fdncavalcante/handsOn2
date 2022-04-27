@@ -5,7 +5,7 @@ const inputAtracoes = document.querySelector("#atracoes");
 const inputDescricao = document.querySelector("#descricao");
 const inputData = document.querySelector("#data");
 const inputLotacao = document.querySelector("#lotacao");
-const form = document.querySelector("main > div:nth-child(2) > form");
+const form = document.querySelector("form");
 
 //outro jeito de fazer: window.location.search, mas aí vai retornar a string '?id=23752356291'
 const id = (new URL(document.location)).searchParams.get("id");
@@ -32,24 +32,11 @@ window.addEventListener('load', async () => {
 //!muito parecido com o cadastrar evento. Refatorar
 form.onsubmit = async (e) => {
   e.preventDefault();
-
-  console.log(id)
-  const date = inputData.value
-  console.log(date)
-  //const formattedDate = date.toISOString()
-  //console.log(formattedDate)
-
   try {
-    const novoEvento = {
-      "name": inputNome.value,
-      "poster": inputBanner.value,
-      "attractions": inputAtracoes.value.split(", "),
-      "description": inputDescricao.value,
-      "scheduled": date,
-      "number_tickets": inputLotacao.value,
-    };
+    const eventoEditado = {};
 
-    editarEvento(id, novoEvento)
+    formParaObj(form,eventoEditado);
+    editarEvento(id, eventoEditado);
    
     //window.location.replace("admin.html")
   } catch (error) {

@@ -1,34 +1,33 @@
-const inputNome = document.querySelector("#nome");
-const inputBanner = document.querySelector("#banner")
-const inputAtracoes = document.querySelector("#atracoes");
-const inputDescricao = document.querySelector("#descricao");
-const inputData = document.querySelector("#data");
-const inputLotacao = document.querySelector("#lotacao");
-
 const id = (new URL(document.location)).searchParams.get("id");
 
-const form = document.querySelector("main > div:nth-child(2) > form");
+const form = document.querySelector("form");
 
 window.addEventListener('load', async () => {
 
   if (id) {
     try {
       const evento = await buscarEvento(id)
+      const keys = Object.keys(evento)
+      evento.scheduled = evento.scheduled.slice(0, -1);
 
-      inputNome.value = evento.name;
-      inputBanner.value = evento.poster;
-      inputAtracoes.value = evento.attractions;
-      inputDescricao.value = evento.description;
-      inputData.value = evento.scheduled.slice(0,-1);
-      inputLotacao.value = evento.number_tickets;
+      for (let i = 0; i < form.elements.length - 1; i++) {
+        const input = form.elements[i]
 
-    } catch(error){
+        for (let j = 0; j < keys.length; j++) {
+          const key = keys[j]
+          if (input.name == key) {
+            input.value = evento[key]
+          }
+        }
+      }
+
+    } catch (error) {
       console.error("erro ao carregar os dados deste evento. Causa do erro: ", error);
       alert("erro ao carregar os dados deste evento");
     }
-    
+
   }
-  
+
 })
 
 form.onsubmit = async (e) => {
@@ -38,9 +37,9 @@ form.onsubmit = async (e) => {
     try {
       await excluirEvento(id);
       window.location.replace("admin.html")
-    } catch(error){
+    } catch (error) {
       console.error("erro na deleção.Causa do erro: ", error);
     }
-    
+
   }
 }
