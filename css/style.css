@@ -33,7 +33,7 @@ main.login {
 
 section.full {
   width: 100%;
-  min-height: 80vh;
+  min-height: 30vh;
   padding: 50px 0;
 }
 
@@ -137,4 +137,34 @@ footer nav ul li {
 
 .hidden {
   display: none;
+}
+
+/* Banner */
+.galery {
+  width: 605px;
+  height: 250px;
+  background-color:transparent;
+  overflow: hidden;
+}
+
+.galery .fotos {
+  width: 500%;
+  animation-name: animação;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+.galery .fotos .img {
+  width: 19.9%;
+}
+@keyframes animação {
+  0% {margin-left: 0;}
+  20% {margin-left: 0;}
+  25% {margin-left: -100%;}
+  45% {margin-left: -100%;}
+  50% {margin-left: -200%;}
+  70% {margin-left: -200%;}
+  75% {margin-left: -300%;}
+  95% {margin-left: -300%;}
+  100% {margin-left: -400%;}
 }
