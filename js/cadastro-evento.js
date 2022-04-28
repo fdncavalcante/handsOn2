@@ -4,8 +4,10 @@ form.onsubmit = async (e) => {
   e.preventDefault();
 
   try {
+
+    //!tentar usar return
     const novoEvento = {};
-    
+
     formParaObj(form, novoEvento);
 
     await criarEvento(novoEvento);

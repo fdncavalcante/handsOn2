@@ -7,23 +7,12 @@ window.addEventListener('load', async () => {
   if (id) {
     try {
       const evento = await buscarEvento(id)
-      const keys = Object.keys(evento)
-      evento.scheduled = evento.scheduled.slice(0, -1);
-
-      for (let i = 0; i < form.elements.length - 1; i++) {
-        const input = form.elements[i]
-
-        for (let j = 0; j < keys.length; j++) {
-          const key = keys[j]
-          if (input.name == key) {
-            input.value = evento[key]
-          }
-        }
-      }
+      objParaForm(evento, form);
 
     } catch (error) {
       console.error("erro ao carregar os dados deste evento. Causa do erro: ", error);
       alert("erro ao carregar os dados deste evento");
+      window.location.replace("admin.html");
     }
 
   }
@@ -35,8 +24,8 @@ form.onsubmit = async (e) => {
 
   if (id) {
     try {
-      await excluirEvento(id);
-      window.location.replace("admin.html")
+      await editarOuExcluir(id,"excluir");
+      //window.location.replace("admin.html")
     } catch (error) {
       console.error("erro na deleção.Causa do erro: ", error);
     }

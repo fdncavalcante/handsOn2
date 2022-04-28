@@ -1,6 +1,5 @@
 //!REFATORANDO
 const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
-let reservasPorId;
 
 //usado em eventos, admin e landing-page
 const listarEventos = async (ordem = false) => {
@@ -23,7 +22,6 @@ const listarEventos = async (ordem = false) => {
       }
       return 0;
     });
-    console.log("na função: " + eventosPorData);
     return eventosPorData;
   }
   return respostaJSON;
@@ -37,6 +35,22 @@ const formParaObj = (form, obj) => {
       obj[input.name] = input.value.split(", ");
     } else {
       obj[input.name] = input.value;
+    }
+  }
+}
+//usado em editar e excluir
+const objParaForm = (obj, form) => {
+  const keys = Object.keys(obj)
+  obj.scheduled = obj.scheduled.slice(0, -1);
+
+  for (let i = 0; i < form.elements.length - 1; i++) {
+    const input = form.elements[i]
+
+    for (let j = 0; j < keys.length; j++) {
+      const key = keys[j]
+      if (input.name == key) {
+        input.value = obj[key]
+      }
     }
   }
 }
@@ -107,44 +121,30 @@ const reservarIngressos = async (dadosReserva = {}) => {
   };
 }
 
-//usado em editar
-const editarEvento = async (id, eventoEditado = {}) => {
+const editarOuExcluir = async (id, acao, eventoEditado = {}) => {
   try {
-    const options = {
-      method: "PUT",
-      body: JSON.stringify(eventoEditado),
+    let options = {
       headers: {
         "Content-Type": "application/json",
       },
     };
 
+    if (acao == "editar") {
+      options.method = "PUT",
+        options.body = JSON.stringify(eventoEditado)
+    } else {
+      options.method = "DELETE"
+    }
 
-    console.log(eventoEditado)
-    const resposta = await fetch(`${BASE_URL}/events/` + id, options);
-    const conteudoResposta = await resposta.json();
-    console.log("🚀 / file: cadastro-evento.js / line 37 / form.onsubmit= / conteudoResposta", conteudoResposta);
+    console.log(options);
+    await fetch(`${BASE_URL}/events/` + id, options);
 
-    alert("seu evento foi atualizado com sucesso!")
+    alert(`seu evento foi ${acao.slice(0,-1)}do com sucesso!`);
     window.location.replace("admin.html")
   } catch (error) {
-    console.log(error);
-    alert("Ops! Algo deu errado na atualização deste evento...");
-  }
-}
-
-//usado em excluir
-const excluirEvento = async (id) => {
-  try {
-    await fetch(`${BASE_URL}/events/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-    alert("deleção feita com sucesso");
-  } catch (error) {
-    console.error("erro na deleção.Causa do erro: ", error);
-    alert("erro na deleção.Cheque o console para a causa do erro");
+    alert(`erro ao ${acao}:\n ${error}`);
+    console.log(error)
+    window.location.replace("admin.html")
   }
 }
 
@@ -154,5 +154,5 @@ const buscarReservas = async (id_evento) => {
   const conteudoResposta = await resposta.json();
   console.log("🚀 / file: cadastro-evento.js / line 37 / form.onsubmit= / conteudoResposta", conteudoResposta);
 
-  reservasPorId = conteudoResposta;
+  return conteudoResposta;
 }
