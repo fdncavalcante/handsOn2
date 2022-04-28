@@ -48,6 +48,7 @@ window.addEventListener('load', async () => {
     const btnReservas = document.createElement("a");
     btnReservas.setAttribute("class", "btn btn-dark");
     btnReservas.innerHTML = "ver reservas";
+    btnReservas.setAttribute("href", "#here")
     tdBotoes.appendChild(btnReservas);
 
     btnReservas.addEventListener("click", async function (e) {
@@ -84,7 +85,7 @@ function abrirModal(id) {
   //fechar visualização no modal
   let posicaoModal = closeTicketModal.getBoundingClientRect().top + window.scrollY
   window.scroll({
-    top: posicaoModal - 50,
+   top: posicaoModal - 50,
   })
   setTimeout(() => {
     window.onscroll = () => {
