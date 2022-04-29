@@ -1,25 +1,13 @@
-const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
 const tBody = document.querySelector("tbody");
 const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
-// const ticketModal = document.querySelector(".reserve-ticket-modal");
+const reservesList = document.querySelector(".reserves-list");
+const listaDeEventos = document.querySelector("tbody");
 
-//const BASE_URL = "https://xp41-soundgarden-api.herokuapp.com";
+window.addEventListener("load", async () => {
+  const respostaJSON = await listarEventos();
 
-for (let btn of reserveTicketButton) {
-  btn.addEventListener("click", function () {
-    modalBackdrop.classList.remove("hidden");
-  });
-}
-
-closeTicketModal.addEventListener("click", function () {
-  modalBackdrop.classList.add("hidden");
-});
-
-const listaEventos = async () => {
-  const resposta = await fetch(`${BASE_URL}/events`);
-  const respostaJSON = await resposta.json();
   for (let i = 0; i < respostaJSON.length; i++) {
     const evento = respostaJSON[i];
 
@@ -60,7 +48,14 @@ const listaEventos = async () => {
     const btnReservas = document.createElement("a");
     btnReservas.setAttribute("class", "btn btn-dark");
     btnReservas.innerHTML = "ver reservas";
+    btnReservas.setAttribute("href", "#here");
     tdBotoes.appendChild(btnReservas);
+
+    btnReservas.addEventListener("click", async function (e) {
+      e.preventDefault();
+      abrirModal(evento._id);
+      await listarReservas();
+    });
 
     //btnEditar
     const btnEditar = document.createElement("a");
@@ -78,6 +73,95 @@ const listaEventos = async () => {
     btnExcluir.style.marginLeft = "3px";
     tdBotoes.appendChild(btnExcluir);
   }
-};
+});
 
-listaEventos();
+closeTicketModal.addEventListener("click", fecharModal);
+
+function abrirModal(id) {
+  //mostrar modal
+  listaDeEventos.classList.add("hidden");
+  modalBackdrop.classList.remove("hidden");
+
+  //fechar visualização no modal
+  // let posicaoModal =
+  //   closeTicketModal.getBoundingClientRect().top + window.scrollY;
+  // window.scroll({
+  //   top: posicaoModal - 50,
+  // });
+  // setTimeout(() => {
+  //   window.onscroll = () => {
+  //     window.scroll({
+  //       top: posicaoModal - 50,
+  //     });
+  //   };
+  // }, 1000);
+
+  //passar id para a url
+  history.replaceState(
+    {
+      id: "lista de reservas",
+      source: "web",
+    },
+    "Sound Garden",
+    "admin.html?id=" + id
+  );
+}
+
+function fecharModal() {
+  //esconder modal
+  listaDeEventos.classList.remove("hidden");
+  modalBackdrop.classList.add("hidden");
+
+  //limpar conteúdo
+  for (child of reservesList.children) {
+    reservesList.removeChild(child);
+  }
+}
+
+async function listarReservas() {
+  const id = new URL(document.location).searchParams.get("id");
+  const reservas = await buscarReservas(id);
+
+  if (reservas.length > 0) {
+    for (let i = 0; i < reservas.length; i++) {
+      const reserva = reservas[i];
+
+      const userReserve = document.createElement("div");
+      userReserve.classList.add("user-reserve");
+
+      const ownerName = document.createElement("b");
+      ownerName.textContent = "Nome do participante";
+      const ownerNameContent = document.createElement("span");
+      ownerNameContent.textContent = reserva.owner_name;
+
+      const ownerEmail = document.createElement("b");
+      ownerEmail.textContent = "Email do participante";
+      const ownerEmailContent = document.createElement("span");
+      ownerEmailContent.textContent = reserva.owner_email;
+
+      const ownerTickets = document.createElement("b");
+      ownerTickets.textContent = "Número de ingressos";
+      const ownerTicketsContent = document.createElement("span");
+      ownerTicketsContent.textContent = `${reserva.number_tickets}`;
+
+      const userSeparation = document.createElement("hr");
+      userSeparation.style.display = "block";
+
+      userReserve.append(
+        ownerName,
+        ownerNameContent,
+        ownerEmail,
+        ownerEmailContent,
+        ownerTickets,
+        ownerTicketsContent,
+        userSeparation
+      );
+      reservesList.appendChild(userReserve);
+    }
+  } else {
+    const nenhumaReserva = document.createElement("b");
+    nenhumaReserva.textContent =
+      "Ainda não há nenhuma reserva para este evento";
+    reservesList.appendChild(nenhumaReserva);
+  }
+}

@@ -1,8 +1,3 @@
-const card1 = document.querySelector("article:nth-child(1)");
-const card2 = document.querySelector("article:nth-child(2)");
-const card3 = document.querySelector("article:nth-child(3)");
-const cards = [card1, card2, card3];
-const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
 
@@ -12,14 +7,9 @@ const inputEmail = document.querySelector("#email-input");
 const inputIngressos = document.querySelector("#tickets-input");
 const formModal = document.querySelector("#here > form")
 
-for (let btn of reserveTicketButton) {
-  btn.addEventListener("click", function () {
-    modalBackdrop.classList.remove("hidden");
-  });
-}
 
 closeTicketModal.addEventListener("click", function () {
-
+  window.onscroll = () => {}
   inputNome.disabled = false;
   inputEmail.disabled = false;
   inputIngressos.disabled = false;
@@ -30,26 +20,57 @@ closeTicketModal.addEventListener("click", function () {
 });
 
 const proximosEventos = async () => {
-  
+
   eventosPorData = await listarEventos(true);
 
   console.log(eventosPorData);
-
-  for (let i = 0; i < 3; i++) {
+  const divMae = document.querySelector("body > main > section:nth-child(2) > div.container.d-flex.justify-content-center.align-items-center.flex-wrap")
+  console.log(divMae)
+  for (let i = 0; i < eventosPorData.length; i++) {
     const evento = eventosPorData[i];
-    const card = cards[i];
 
     const dataRaw = new Date(evento.scheduled);
     const data = `${dataRaw.getDate()}/${dataRaw.getMonth() + 1}/${dataRaw.getFullYear()}`;
 
-    card.querySelector("h2").innerHTML = `${evento.name} - ${data}`;
-    card.querySelector("h4").innerHTML = evento.attractions;
-    card.querySelector("p").innerHTML = evento.description;
+    //cards
+    const card = document.createElement("article");
+    card.className = "evento card p-5 m-3";
+    divMae.appendChild(card);
 
+    //h2
+    const tituloCard = document.createElement("h2");
+    tituloCard.innerHTML = `${evento.name} - ${data}`
+    card.appendChild(tituloCard);
+
+    //h4
+    const atracoesCard = document.createElement("h4");
+    atracoesCard.innerHTML = evento.attractions;
+    card.appendChild(atracoesCard);
+
+    //p
+    const descricaoCard = document.createElement("p");
+    descricaoCard.innerHTML = evento.description;
+    card.appendChild(descricaoCard);
+
+    //a
+    const botaoCard = document.createElement("a");
+    botaoCard.className = "btn btn-primary btn-ticket"
+    botaoCard.innerHTML = "reservar ingresso";
+    botaoCard.href = "#here";
+    card.appendChild(botaoCard);
 
     card.querySelector("a").addEventListener('click', () => {
       formModal.setAttribute("id", `${evento._id}`)
+      modalBackdrop.classList.remove("hidden");
       console.log(formModal.id)
+      let posicaoModal = closeTicketModal.getBoundingClientRect().top + window.scrollY
+      setTimeout(() => {
+        window.onscroll = () => {
+          window.scroll({
+            top: posicaoModal - 50,
+          })
+        }
+      }, 1000);
     })
   }
 };
@@ -64,7 +85,7 @@ formModal.onsubmit = async (e) => {
       "event_id": formModal.id,
     };
 
-    formParaObj(formModal,novaReserva);
+    formParaObj(formModal, novaReserva);
 
     const resposta = await reservarIngressos(novaReserva);
 

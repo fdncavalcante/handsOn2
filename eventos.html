@@ -12,10 +12,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="./js/eventos-admin.js" defer></script>
   </head>
 
-  <body>
+  <body onload="proximosEventos()">
     <header class="d-flex justify-content-center align-items-center">
       <a href="index.html">
         <img src="img/Sound-logo (1).png" width="300" alt="" />
@@ -33,9 +32,11 @@
             </div>
             <div class="inputs-container">
               <label for="name-input">Nome</label>
-              <input id="name-input" type="text" />
+              <input id="name-input" type="text" required name="owner_name"/>
               <label for="email-input">E-mail</label>
-              <input id="email-input" type="email" />
+              <input id="email-input" type="email" required name="owner_email"/>
+              <label for="tickets-input">Nº de ingressos</label>
+              <input id="tickets-input" type="number" required name="number_tickets"/>
             </div>
             <button>Reservar</button>
           </form>
@@ -48,84 +49,7 @@
         <div
           class="container d-flex justify-content-center align-items-center flex-wrap"
         >
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
-          <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
-            </p>
-            <a href="#here" class="btn btn-primary btn-ticket"
-              >reservar ingresso</a
-            >
-          </article>
+          <!-- EVENTOS AQUI -->
         </div>
       </section>
       <section
@@ -163,7 +87,7 @@
                 nesciunt hic nobis libero velit at reiciendis.
               </p>
             </div>
-            <div class="col">
+            <div class="col" id="col-img">
               <img src="img/music.svg" width="500px" />
             </div>
           </div>
@@ -171,7 +95,7 @@
       </section>
     </main>
     <footer>
-      <div class="container d-flex justify-content-center align-items-center">
+      <div class="container d-flex justify-content-center align-items-center" id="footer">
         <a href="#">
           <img src="img/Sound-logo-black (1).png" width="200px" alt="" />
         </a>
@@ -187,5 +111,7 @@
         </nav>
       </div>
     </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/eventos.js"></script>
   </body>
 </html>

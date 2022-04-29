@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body>
+  <body onload="proximosEventos()">
     <header class="d-flex justify-content-center align-items-center">
       <img src="img/Sound-logo (1).png" width="300" alt="" />
     </header>
@@ -30,11 +30,13 @@
             </div>
             <div class="inputs-container">
               <label for="name-input">Nome</label>
-              <input id="name-input" type="text" />
+              <input id="name-input" type="text" required name="owner_name"/>
               <label for="email-input">E-mail</label>
-              <input id="email-input" type="email" />
+              <input id="email-input" type="email" required name="owner_email"/>
+              <label for="tickets-input">Nº de ingressos</label>
+              <input id="tickets-input" type="number" required name="number_tickets"/>
             </div>
-            <button>Reservar</button>
+            <button id="button-modal" type="submit">Reservar</button>
           </form>
         </div>
       </div>
@@ -42,49 +44,46 @@
         class="full d-flex justify-content-center align-items-center"
         style="background-color: #f8bbd0; color: #fff"
       >
-        <div class="text-center">
-          <h1>Adicione um banner maneiro aqui</h1>
-        </div>
+        <section class="galery">
+          <div class="fotos">
+            <img src="img/evento-1.png" width="600px" />
+            <img src="img/evento-2.png" width="600px" />
+            <img src="img/evento-3.png" width="600px" />
+            <img src="img/evento-4.png" width="600px" />
+            <img src="img/evento-1.png" width="600px" />
+          </div>
+        </section>
       </section>
       <section class="full">
         <div class="container text-center">
           <h2>Próximos eventos</h2>
         </div>
-        <div class="container d-flex justify-content-center align-items-center">
+        <div class="container d-flex justify-content-center align-items-center" id="container-eventor"> 
           <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
+            <h2>Em breve</h2>
+            <h4>Aguarde, em breve mais um evento ótimo para você</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
+              Não deixe de checar esta página para não perder nenhum evento!
             </p>
             <a href="#here" class="btn btn-primary btn-ticket"
               >reservar ingresso</a
             >
           </article>
           <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
+            <h2>Em breve</h2>
+            <h4>Aguarde, em breve mais um evento ótimo para você</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
+              Não deixe de checar esta página para não perder nenhum evento!
             </p>
             <a href="#here" class="btn btn-primary btn-ticket"
               >reservar ingresso</a
             >
           </article>
           <article class="evento card p-5 m-3">
-            <h2>nome do evento - 05/03/2022</h2>
-            <h4>Arctic Monkeys, The Kooks, Hiatus Kaiyote</h4>
+            <h2>Em breve</h2>
+            <h4>Aguarde, em breve mais um evento ótimo para você</h4>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-              aperiam sunt quo similique, dolorum consectetur inventore ipsam,
-              officiis neque natus eius harum alias quidem. Possimus nobis in
-              inventore tenetur asperiores.
+              Não deixe de checar esta página para não perder nenhum evento!
             </p>
             <a href="#here" class="btn btn-primary btn-ticket"
               >reservar ingresso</a
@@ -132,7 +131,7 @@
                 nesciunt hic nobis libero velit at reiciendis.
               </p>
             </div>
-            <div class="col">
+            <div class="col" id="col-img">
               <img src="img/music.svg" width="500px" />
             </div>
           </div>
@@ -140,7 +139,7 @@
       </section>
     </main>
     <footer>
-      <div class="container d-flex justify-content-center align-items-center">
+      <div class="container d-flex justify-content-center align-items-center" id="footer">
         <a href="#">
           <img src="img/Sound-logo-black (1).png" width="200px" alt="" />
         </a>
@@ -156,6 +155,7 @@
         </nav>
       </div>
     </footer>
+    <script src="./js/index.js"></script>
     <script src="./js/landing-page.js"></script>
   </body>
 </html>
