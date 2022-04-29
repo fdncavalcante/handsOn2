@@ -60,7 +60,7 @@ footer nav ul li {
   z-index: 2;
 
   min-width: 100vw;
-  min-height: 100vh;
+  min-height: 200vh;
 
   background-color: rgba(0, 0, 0, 0.251);
 
@@ -70,24 +70,14 @@ footer nav ul li {
 }
 
 .reserve-ticket-modal {
-  padding: 1rem;
+  padding: 2rem;
 
-  padding-top: 1rem;
-
-  height: 34rem;
+  height: 30rem;
   width: 30rem;
 
   background-color: white;
-  /* box-shadow: 0.1rem 0.2rem 2rem 0.4rem black; */
+  box-shadow: 0.1rem 0.2rem 2rem 0.4rem black;
   border-radius: 3rem;
-
-  border: 8px solid #c2185b;
-}
-
-.reserve-ticket-modal hr {
-  height: 0.5rem;
-
-  background-color: #c2185b;
 }
 
 .reserve-ticket-modal form {
@@ -102,7 +92,6 @@ footer nav ul li {
 }
 
 .ticket-modal-close-icon {
-  font-size: 1.7rem;
   cursor: pointer;
 }
 
@@ -227,15 +216,7 @@ footer nav ul li {
 
 .user-reserves-info h1 {
   font-size: 4rem;
-  margin-bottom: 2rem;
 }
-
-/* .reserves-list {
-  background-color: #c4c4c45c;
-  border: 5px solid rgba(0, 0, 0, 0.367);
-
-  box-shadow: 2px 2px 20px 4px black;
-} */
 
 .list {
   margin-right: 40rem;
@@ -244,25 +225,13 @@ footer nav ul li {
 }
 
 .reserves-list-itens {
-  /* background-color: #c4c4c45c; */
-  box-shadow: 2px 2px 10px 4px black;
-
   height: 20rem;
   max-height: 30rem;
   overflow: auto;
 }
 
 .info-list h1 {
-  margin-bottom: 2rem;
   font-size: 2rem;
-
-  background-color: #c2185b;
-
-  color: white;
-
-  padding: 0.5rem;
-
-  border-radius: 1rem;
 }
 
 .close-list b {
@@ -274,17 +243,13 @@ footer nav ul li {
   flex-direction: column;
 }
 
-.user-reserve b {
-  color: #c2185b;
-}
-
 /* Responsivo */
 
-.col {
+.col{
   display: block;
 }
 
-#col-img {
+#col-img{
   display: block;
 }
 
@@ -300,8 +265,7 @@ footer nav ul li {
   display: flex;
 }
 
-/* .container {        
-
+.container {        
 }
 
 #col-left {
@@ -317,15 +281,13 @@ footer nav ul li {
 }
 #lista {
   display: ;
+}
 
-} */
-
-/* .btn {
+.btn {
   line-height:;
-} */
+}
 
-/* .bd-example {}
-
+.bd-example {}
 
 .row {}
 
@@ -343,68 +305,68 @@ footer nav ul li {
 
 .admin-logo{}
 
-#excluir-col{} */
+#excluir-col{}
 
 @media only screen and (max-width: 481px) {
+  
   #col-img {
-    display: none;
+      display:none;
   }
   #footer {
-    display: flex;
-    flex-direction: column;
+      display: flex;
+      flex-direction: column;
   }
 
   .container {
-    padding: 0 30px;
+      padding: 0 30px;
   }
   #col-left {
-    width: 480px;
+      width: 480px;
   }
   .img-responsive {
-    display: flex;
-    max-width: 20%;
+      display: flex;
+      max-width: 20%;
   }
   #logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    width: 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+      width: 10%;
   }
 
-  .col-6 {
-    width: 150%;
+  .col-6{
+      width:150%;
   }
 
   .btn {
-    line-height: 0.8;
-    width: 90px;
-    font-size: 10px;
+      line-height: 0.8;
+      width: 90px;
+      font-size: 10px;
   }
 
   .bd-example {
-    width: 120%;
-    display: flex;
-    justify-content: center;
-    font-size: 11px;
-    margin-left: 40px;
+      width: 120%;
+      display: flex;
+      justify-content: center;
+      font-size: 11px;
+      margin-left: 40px;
   }
   .row {
-    font-size: 13px;
+      font-size: 13px;
   }
   .btn-index {
-    line-height: 0.9;
-    font-size: 12px;
+      line-height: 0.9;
+      font-size: 12px;
   }
   #btn-excluir {
-    line-height: 0.9;
-    font-size: 12px;
+      line-height: 0.9;
+      font-size: 12px;
   }
 
   .btn-reservar {
-    line-height: 0.9;
-    font-size: 12px;
-
+      line-height: 0.9;
+      font-size: 12px;
   }
 
   .galery {
@@ -412,8 +374,8 @@ footer nav ul li {
   }
 
   .reserve-ticket-modal {
-    width: 80%;
-    height: 10%;
+   width: 80%;
+   height: 10%;
   }
 
   .inputs-container {
@@ -428,48 +390,47 @@ footer nav ul li {
     width: 80% !important;
   }
 
-}
+} 
 
-@media (max-width: 769px) and (min-width: 481px) {
-  .col {
-    display: flex;
-    flex-direction: column;
-  }
+@media (max-width: 769px) and (min-width: 481px){
+  .col{
+      display: flex;
+      flex-direction: column;
+  }  
   #col-img {
-    display: none;
+      display:none;
   }
   #col-left {
-    width: 160px;
+      width: 160px;
   }
-  .col-6 {
-    width: 100%;
-  }
+  .col-6{
+      width:100%;
+  }   
   .btn {
-    line-height: 0.8;
-    font-size: 12px;
-    width: 110px;
+      line-height: 0.8;
+      font-size: 12px;
+      width: 110px;
   }
   .btn-index {
-    line-height: 1.5;
+      line-height: 1.5;
   }
 
   #btn-excluir {
-    line-height: 0.8;
+      line-height: 0.8;
   }
-  .btn-reservar {
-    line-height: 0.8;
-
+  .btn-reservar{
+      line-height: 0.8;
   }
   .col-left768 {
     width: 768px !important;
   }
   #logo {
     width: 2%;
-  }
-
-  .admin-logo {
-    width: 50% !important;
-    margin-left: 100px;
-  }
 }
 
+.admin-logo {
+  width: 50% !important;
+  margin-left: 100px;
+}
+
+}
