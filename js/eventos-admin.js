@@ -82,20 +82,6 @@ function abrirModal(id) {
   listaDeEventos.classList.add("hidden");
   modalBackdrop.classList.remove("hidden");
 
-  //fechar visualização no modal
-  // let posicaoModal =
-  //   closeTicketModal.getBoundingClientRect().top + window.scrollY;
-  // window.scroll({
-  //   top: posicaoModal - 50,
-  // });
-  // setTimeout(() => {
-  //   window.onscroll = () => {
-  //     window.scroll({
-  //       top: posicaoModal - 50,
-  //     });
-  //   };
-  // }, 1000);
-
   //passar id para a url
   history.replaceState(
     {
@@ -109,13 +95,14 @@ function abrirModal(id) {
 
 function fecharModal() {
   //esconder modal
-  listaDeEventos.classList.remove("hidden");
   modalBackdrop.classList.add("hidden");
 
   //limpar conteúdo
-  for (child of reservesList.children) {
-    reservesList.removeChild(child);
+  while (reservesList.firstChild) {
+    reservesList.removeChild(reservesList.firstChild);
   }
+  
+  window.onscroll = () => {};
 }
 
 async function listarReservas() {
@@ -165,3 +152,4 @@ async function listarReservas() {
     reservesList.appendChild(nenhumaReserva);
   }
 }
+

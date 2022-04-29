@@ -301,6 +301,7 @@ footer nav ul li {
 }
 
 /* .container {        
+
 }
 
 #col-left {
@@ -316,6 +317,7 @@ footer nav ul li {
 }
 #lista {
   display: ;
+
 } */
 
 /* .btn {
@@ -323,6 +325,7 @@ footer nav ul li {
 } */
 
 /* .bd-example {}
+
 
 .row {}
 
@@ -401,6 +404,7 @@ footer nav ul li {
   .btn-reservar {
     line-height: 0.9;
     font-size: 12px;
+
   }
 
   .galery {
@@ -423,6 +427,7 @@ footer nav ul li {
   .excluir-evento-logo {
     width: 80% !important;
   }
+
 }
 
 @media (max-width: 769px) and (min-width: 481px) {
@@ -453,6 +458,7 @@ footer nav ul li {
   }
   .btn-reservar {
     line-height: 0.8;
+
   }
   .col-left768 {
     width: 768px !important;
@@ -466,3 +472,4 @@ footer nav ul li {
     margin-left: 100px;
   }
 }
+
