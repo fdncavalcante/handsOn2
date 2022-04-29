@@ -105,11 +105,12 @@ function abrirModal(id) {
 function fecharModal() {
   //esconder modal
   modalBackdrop.classList.add("hidden");
-  
+
   //limpar conteúdo
-  for (child of reservesList.children) {
-    reservesList.removeChild(child);
+  while (reservesList.firstChild) {
+    reservesList.removeChild(reservesList.firstChild);
   }
+  
   window.onscroll = () => {};
 }
 
