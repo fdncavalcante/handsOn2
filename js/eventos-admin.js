@@ -3,9 +3,9 @@ const reserveTicketButton = document.querySelectorAll(".btn-ticket");
 const modalBackdrop = document.querySelector(".backdrop-reserve-ticket-modal");
 const closeTicketModal = document.querySelector(".ticket-modal-close-icon");
 const reservesList = document.querySelector(".reserves-list");
+const listaDeEventos = document.querySelector("tbody");
 
-
-window.addEventListener('load', async () => {
+window.addEventListener("load", async () => {
   const respostaJSON = await listarEventos();
 
   for (let i = 0; i < respostaJSON.length; i++) {
@@ -48,7 +48,7 @@ window.addEventListener('load', async () => {
     const btnReservas = document.createElement("a");
     btnReservas.setAttribute("class", "btn btn-dark");
     btnReservas.innerHTML = "ver reservas";
-    btnReservas.setAttribute("href", "#here")
+    btnReservas.setAttribute("href", "#here");
     tdBotoes.appendChild(btnReservas);
 
     btnReservas.addEventListener("click", async function (e) {
@@ -77,29 +77,20 @@ window.addEventListener('load', async () => {
 
 closeTicketModal.addEventListener("click", fecharModal);
 
-
 function abrirModal(id) {
   //mostrar modal
+  listaDeEventos.classList.add("hidden");
   modalBackdrop.classList.remove("hidden");
 
-  //fechar visualização no modal
-  let posicaoModal = closeTicketModal.getBoundingClientRect().top + window.scrollY
-  window.scroll({
-   top: posicaoModal - 50,
-  })
-  setTimeout(() => {
-    window.onscroll = () => {
-      window.scroll({
-        top: posicaoModal - 50,
-      })
-    }
-  }, 1000);
-
   //passar id para a url
-  history.replaceState({
-    id: 'lista de reservas',
-    source: 'web'
-  }, 'Sound Garden', "admin.html?id=" + id);
+  history.replaceState(
+    {
+      id: "lista de reservas",
+      source: "web",
+    },
+    "Sound Garden",
+    "admin.html?id=" + id
+  );
 }
 
 function fecharModal() {
@@ -116,7 +107,7 @@ function fecharModal() {
 
 async function listarReservas() {
   const id = new URL(document.location).searchParams.get("id");
-  const reservas = await buscarReservas(id)
+  const reservas = await buscarReservas(id);
 
   if (reservas.length > 0) {
     for (let i = 0; i < reservas.length; i++) {
@@ -150,14 +141,15 @@ async function listarReservas() {
         ownerEmailContent,
         ownerTickets,
         ownerTicketsContent,
-        userSeparation,
+        userSeparation
       );
       reservesList.appendChild(userReserve);
     }
   } else {
     const nenhumaReserva = document.createElement("b");
-    nenhumaReserva.textContent = "Ainda não há nenhuma reserva para este evento";
+    nenhumaReserva.textContent =
+      "Ainda não há nenhuma reserva para este evento";
     reservesList.appendChild(nenhumaReserva);
   }
-
 }
+
